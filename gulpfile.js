@@ -29,7 +29,7 @@ function buildPug() {
     .pipe(pug())
     .pipe(gulp.dest('./static/'))
     .pipe(sitemap({
-      siteUrl: 'http://example.com',
+      siteUrl: 'https://defense.tw',
       images: true
     }))
     .pipe(gulp.dest('./static/'))
