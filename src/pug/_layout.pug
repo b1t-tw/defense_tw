@@ -1,0 +1,53 @@
+block variables
+doctype
+html(lang="zh-Hant-TW")
+    head
+        // 網頁設計－位元創意有限公司 b1t.tw
+        title #{title} | 防衛黑客松 
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        link(rel="shortcut icon", type="image/png", href="/assets/img/favicon.png")
+        link(link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM", crossorigin="anonymous")
+        link(rel='preconnect', href='https://fonts.googleapis.com')
+        link(rel='preconnect', href='https://fonts.gstatic.com', crossorigin)
+        link(href='https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap', rel='stylesheet')
+        link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css", integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e", crossorigin="anonymous")
+        link(rel="stylesheet", href="/assets/css/base.css?version="+timestamp)
+        block head
+    body(data-bs-theme="dark")
+        #navbar-spaceholder
+        nav.navbar.navbar-expand-lg.fixed-top: .container-fluid
+            a.navbar-brand(href='#') 
+            button.navbar-toggler.border-0(type='button', data-bs-toggle='offcanvas', data-bs-target='#offcanvasNavbar', aria-controls='offcanvasNavbar', aria-label='Toggle navigation')
+                span.navbar-toggler-icon
+            .offcanvas.offcanvas-end#offcanvasNavbar(tabindex='-1', aria-labelledby='offcanvasNavbarLabel')
+                .offcanvas-header
+                    h5.offcanvas-title#offcanvasNavbarLabel 
+                    button.btn-close(type='button', data-bs-dismiss='offcanvas', aria-label='Close')
+                .offcanvas-body
+                    ul.navbar-nav.justify-content-end.flex-grow-1.pe-3.text-center
+                        li.nav-item
+                            a.nav-link(href='/#about') 活動介紹
+                        li.nav-item
+                            a.nav-link(href='/#award') 獎項
+                        li.nav-item
+                            a.nav-link(href='/#score') 評選標準
+                        li.nav-item
+                            a.nav-link(href='/#event') 講座資訊
+        block body      
+        footer.container-fluid.py-5
+            .row.justify-content-center.align-items-center.text-center.g-3
+                .col-md-auto: img(src="/assets/img/TIA.png")
+                .col-md-auto.text-dark <i class="bi bi-x-lg"></i>
+                .col-md-auto: img.smaller(src="/assets/img/jothon_L.png")
+        script(src=src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js", integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz", crossorigin="anonymous")
+        script(src='https://code.jquery.com/jquery-3.7.0.min.js' integrity='sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=' crossorigin='anonymous')
+        script.
+            const bsOffcanvas = new bootstrap.Offcanvas('#offcanvasNavbar')
+            $(".offcanvas-body a.nav-link").on("click", function(e) {
+                e.preventDefault()
+                bsOffcanvas.hide()
+                let target = e.target.href.split("/#")[1]
+                $(window).scrollTop($(`#${target}`).offset().top - 60)
+            })
